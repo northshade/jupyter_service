@@ -67,7 +67,7 @@ services:
       TZ: Europe/Copenhagen
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: -update nielsbohr/base-notebook
+    command: -update jupyter/all-spark-notebook
 
 volumes:
   jhubstate:
