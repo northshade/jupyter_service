@@ -10,7 +10,10 @@ services:
     image: nielsbohr/jupyterhub:latest
     deploy:
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.platform.os == linux
+          - node.platform.arch == x86_64
     ports:
        - "8888:8000"
     environment:
@@ -43,6 +46,10 @@ services:
   docker-volume-monitor:
     image: rasmunk/docker-volume-monitor
     deploy:
+      placement:
+        constraints:
+          - node.platform.os == linux
+          - node.platform.arch == x86_64
       mode: global
     environment:
       TZ: Europe/Copenhagen
@@ -51,6 +58,10 @@ services:
   docker-image-updater:
     image: rasmunk/docker-image-updater
     deploy:
+      placement:
+        constraints:
+          - node.platform.os == linux
+          - node.platform.arch == x86_64
       mode: global
     environment:
       TZ: Europe/Copenhagen
